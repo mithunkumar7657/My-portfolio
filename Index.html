@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Developer Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background-color: #030712;
+      color: #f3f4f6;
+      padding-bottom: 60px;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(17, 24, 39, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #1f2937;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+
+    .nav-logo {
+      color: #10b981;
+      font-weight: bold;
+      font-family: monospace;
+      font-size: 1.2rem;
+      text-decoration: none;
+    }
+
+    .nav-links a {
+      color: #9ca3af;
+      text-decoration: none;
+      margin-left: 15px;
+      font-size: 0.9rem;
+    }
+
+    .hero {
+      padding: 110px 20px 40px 20px;
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(16, 185, 129, 0.1);
+      color: #10b981;
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .highlight {
+      color: #10b981;
+    }
+
+    .subtext {
+      color: #9ca3af;
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 25px;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .btn-primary {
+      background: #10b981;
+      color: #030712;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .btn-secondary {
+      border: 1px solid #374151;
+      color: #f3f4f6;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+
+    /* Terminal Box */
+    .terminal-card {
+      max-width: 650px;
+      margin: 20px auto 40px auto;
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    }
+
+    .terminal-header {
+      background: #1f2937;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .red { background: #ef4444; }
+    .yellow { background: #f59e0b; }
+    .green { background: #10b981; }
+
+    .terminal-title {
+      color: #9ca3af;
+      font-size: 0.75rem;
+      font-family: monospace;
+      margin-left: 8px;
+    }
+
+    .terminal-body {
+      padding: 16px;
+      font-family: monospace;
+      font-size: 0.85rem;
+      min-height: 160px;
+    }
+
+    #terminal-history {
+      margin: 10px 0;
+    }
+
+    .terminal-input-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .prompt-arrow {
+      color: #10b981;
+    }
+
+    #terminal-input {
+      background: transparent;
+      border: none;
+      color: #f3f4f6;
+      outline: none;
+      width: 100%;
+      font-family: monospace;
+      font-size: 0.9rem;
+    }
+
+    /* Projects */
+    .section-title {
+      text-align: center;
+      margin: 50px 0 10px;
+      font-size: 1.8rem;
+    }
+
+    .section-sub {
+      text-align: center;
+      color: #9ca3af;
+      font-size: 0.9rem;
+      margin-bottom: 30px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .project-card {
+      background: #111827;
+      border: 1px solid #1f2937;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .project-card h3 {
+      margin: 10px 0;
+      font-size: 1.1rem;
+    }
+
+    .project-card p {
+      color: #9ca3af;
+      font-size: 0.85rem;
+      margin-bottom: 15px;
+      line-height: 1.4;
+    }
+
+    .tags span {
+      display: inline-block;
+      background: rgba(16, 185, 129, 0.1);
+      color: #10b981;
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-right: 5px;
+      font-family: monospace;
+    }
+
+    /* Contact Form */
+    .contact-form {
+      max-width: 500px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.75rem;
+      color: #9ca3af;
+      margin-bottom: 5px;
+      font-family: monospace;
+    }
+
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 6px;
+      color: #fff;
+      outline: none;
+      font-size: 0.9rem;
+    }
+
+    .form-group input:focus, .form-group textarea:focus {
+      border-color: #10b981;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: #10b981;
+      color: #030712;
+      padding: 12px;
+      border-radius: 6px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">&lt;Mithun ji &gt;</a>
+    <div class="nav-links">
+      <a href="#terminal">Terminal</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="badge">Available for Projects & Collaboration</div>
+    <h1>Hi, I'm <span class="highlight">Mithun</span></h1> <p class="subtext">Full-stack developer focused on clean architecture, automation scripting, and interactive experiences.</p>
+    <p class="subtext">Full-stack developer focused on clean architecture, automation scripting, and interactive experiences.</p>
+    <div class="btn-group">
+      <a href="#projects" class="btn-primary">View Work</a>
+      <a href="#contact" class="btn-secondary">Get in Touch</a>
+    </div>
+  </header>
+
+  <section id="terminal" style="padding: 0 20px;">
+    <div class="terminal-card">
+      <div class="terminal-header">
+        <div class="dot red"></div>
+        <div class="dot yellow"></div>
+        <div class="dot green"></div>
+        <span class="terminal-title">Mk@developer-box:~</span>
+      </div>
+      <div class="terminal-body">
+        <p style="color: #9ca3af;">Type <span style="color: #10b981;">help</span> to view available commands.</p>
+        <div id="terminal-history"></div>
+        <div class="terminal-input-row">
+          <span class="prompt-arrow">&gt;</span>
+          <input id="terminal-input" type="text" placeholder="try 'skills', 'about', or 'clear', 'my self'..." />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2 class="section-title">Featured Projects</h2>
+    <p class="section-sub">Functional projects built with focus on real-world utility.</p>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Network Automation Utility</h3>
+        <p>A script automating system configuration, network diagnostics, and backups.</p>
+        <div class="tags"><span>Python</span><span>Bash</span><span>CLI</span></div>
+      </div>
+      <div class="project-card">
+        <h3>Interactive Web Experience</h3>
+        <p>Modern dark UI with interactive terminal simulator and responsive layout.</p>
+        <div class="tags"><span>JavaScript</span><span>CSS3</span><span>HTML5</span></div>
+      </div>
+      <div class="project-card">
+        <h3>REST API & Auth Handler</h3>
+        <p>Backend microservice handling tokens and JSON data flow securely.</p>
+        <div class="tags"><span>Node.js</span><span>Express</span><span>REST</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 class="section-title">Contact Me</h2>
+    <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+      <div class="form-group">
+        <label>NAME</label>
+        <input type="text" name="name" required placeholder="Your Name" />
+      </div>
+      <div class="form-group">
+        <label>EMAIL</label>
+        <input type="email" name="email" required placeholder="mithun7657919794@gmail.com" />
+      </div>
+      <div class="form-group">
+        <label>MESSAGE</label>
+        <textarea name="message" rows="4" required placeholder="Write your message..."></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Send Message</button>
+    </form>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+  </html>
+  
